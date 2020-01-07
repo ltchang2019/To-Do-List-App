@@ -19,6 +19,6 @@ class Project: Codable{
     }
     
     func countUncheckedTasks() -> Int {
-        
+        return 0
     }
 }

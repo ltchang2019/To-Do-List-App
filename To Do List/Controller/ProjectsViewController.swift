@@ -72,6 +72,7 @@ extension ProjectsViewController{
             if let indexPath = tableView.indexPathForSelectedRow{
                 toCategoryVC.index = indexPath.row
                 toCategoryVC.projectItems = projectItems
+//                toCategoryVC.navigationItem.backBarButtonItem?.title = "\(projectItems[indexPath.row].name)"
             }
         } else if segue.identifier == "editProject"{
             let editProjectVC = segue.destination as! AddProjectViewController

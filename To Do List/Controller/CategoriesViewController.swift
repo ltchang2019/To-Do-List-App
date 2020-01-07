@@ -19,6 +19,7 @@ class CategoriesViewController: UITableViewController{
     
     override func viewDidLoad() {
         navigationItem.rightBarButtonItem = addTaskButton
+        self.title = projectItems[index].name
     }
     
     override func viewWillAppear(_ animated: Bool) {

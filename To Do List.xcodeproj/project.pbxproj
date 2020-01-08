@@ -21,6 +21,7 @@
 		9A9F6AFB23AE91E6004AC96A /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9F6AFA23AE91E6004AC96A /* DataModel.swift */; };
 		9A9F6AFD23AF44C9004AC96A /* Project.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A9F6AFC23AF44C9004AC96A /* Project.swift */; };
 		9ADBEBD623C4047B003D58BA /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBEBD523C4047B003D58BA /* CollectionViewCell.swift */; };
+		9ADBEBD823C43A06003D58BA /* IconPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ADBEBD723C43A06003D58BA /* IconPickerCell.swift */; };
 		F48BDE3F606F1A99E08C66C3 /* Pods_To_Do_List.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E367662037A74B41B23718E /* Pods_To_Do_List.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		9A9F6AFA23AE91E6004AC96A /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		9A9F6AFC23AF44C9004AC96A /* Project.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Project.swift; sourceTree = "<group>"; };
 		9ADBEBD523C4047B003D58BA /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		9ADBEBD723C43A06003D58BA /* IconPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconPickerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,8 @@
 		9A54FC4D23B169B6000ED4F7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9ADBEBD523C4047B003D58BA /* CollectionViewCell.swift */,
+				9ADBEBD723C43A06003D58BA /* IconPickerCell.swift */,
 				9A9F6AE923AE9158004AC96A /* Main.storyboard */,
 			);
 			path = View;
@@ -134,7 +138,6 @@
 			children = (
 				9A9F6AF823AE917E004AC96A /* Task.swift */,
 				9A9F6AFC23AF44C9004AC96A /* Project.swift */,
-				9ADBEBD523C4047B003D58BA /* CollectionViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				9A9F6AFD23AF44C9004AC96A /* Project.swift in Sources */,
 				9A54FC5423B29EF3000ED4F7 /* IconPickerViewController.swift in Sources */,
 				9A977F4523BC2655001DD04D /* AddTaskViewController.swift in Sources */,
+				9ADBEBD823C43A06003D58BA /* IconPickerCell.swift in Sources */,
 				9ADBEBD623C4047B003D58BA /* CollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

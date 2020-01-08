@@ -26,10 +26,9 @@ extension IconPickerViewController{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "iconPickerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "iconPickerCell", for: indexPath) as! IconPickerCell
         
-        cell.textLabel?.text = iconArray[indexPath.row]
-        cell.imageView?.image = UIImage(named: iconArray[indexPath.row])
+        cell.iconName = iconArray[indexPath.row]
         
         return cell
     }
@@ -38,7 +37,7 @@ extension IconPickerViewController{
         if let cell = tableView.cellForRow(at: indexPath){
             cell.accessoryType = .checkmark
             delegate?.iconPicked(iconName: iconArray[indexPath.row])
-            navigationController?.popViewController(animated: true)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     

@@ -12,19 +12,30 @@ protocol EditProjectDelegate {
     func reloadAfterDelete(projects: [Project])
 }
 
-class AddProjectViewController: UITableViewController{
+protocol ProjectSavedDelegate {
+    func reloadAfterSave()
+}
+
+class AddProjectViewController: UIViewController{
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var cancelBarButtonItem: UIBarButtonItem!
-    @IBOutlet weak var saveBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var cancelDeleteButton: UIButton!
+    @IBOutlet weak var saveBarButtonItem: UIButton!
+    @IBOutlet weak var pickProjectView: UIView!
     
     var editProjectDelegate: EditProjectDelegate?
+    var projectSavedDelegate: ProjectSavedDelegate?
     
     var projectItems: [Project]!
     var projectIndex: Int?
     var iconName: String?
     
+    let dataFilePathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Projects.plist")
+    
     override func viewDidLoad() {
+        pickProjectView.layer.cornerRadius = 3.0
+        saveBarButtonItem.layer.cornerRadius = 3.0
+        
         if projectIndex != nil{
             nameTextField.text = projectItems[projectIndex!].name
             iconImageView.image = UIImage(named: projectItems[projectIndex!].iconName)
@@ -32,13 +43,17 @@ class AddProjectViewController: UITableViewController{
         } else {
             iconName = "Checklist"
         }
-        navigationItem.leftBarButtonItem = cancelBarButtonItem
-        navigationItem.rightBarButtonItem = saveBarButtonItem
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.toIconPicker(_:)))
+        pickProjectView.addGestureRecognizer(tap)
     }
     
-    let dataFilePathURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("Projects.plist")
+    @objc func toIconPicker(_ sender: UITapGestureRecognizer){
+        performSegue(withIdentifier: "toIconPicker", sender: nil)
+    }
     
-    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
         if !nameTextField.text!.isEmpty {
             if projectIndex != nil{
                 projectItems[projectIndex!].name = nameTextField.text!
@@ -57,11 +72,14 @@ class AddProjectViewController: UITableViewController{
             print("Error encoding data: \(error)")
         }
         
-        navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true) {
+            self.projectSavedDelegate?.reloadAfterSave()
+        }
+        
     }
     
-    @IBAction func cancelButtonPressed(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+    @IBAction func cancelButtonPressed(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {

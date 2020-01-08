@@ -19,6 +19,12 @@ class Project: Codable{
     }
     
     func countUncheckedTasks() -> Int {
-        return 0
+        var count = 0
+        for task in tasks{
+            if !task.isChecked{
+                count += 1
+            }
+        }
+        return count
     }
 }
